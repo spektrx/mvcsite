@@ -1,0 +1,13 @@
+﻿@model mvcsite.Models.User
+
+login account
+
+<form asp-action="login" asp-controller="account">
+    <p>
+        <label asp-for="Name">Имя</label><br />
+        <input type="text" asp-for="Name" />
+    </p>
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+</form>

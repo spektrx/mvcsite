@@ -9,45 +9,53 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = mvcsite
 build_property.RootNamespace = mvcsite
-build_property.ProjectDir = C:\Users\фвьшт\Desktop\mvcsite\
+build_property.ProjectDir = C:\Users\Box\Source\Repos\mvcsite\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\фвьшт\Desktop\mvcsite
+build_property.MSBuildProjectDirectory = C:\Users\Box\Source\Repos\mvcsite
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/фвьшт/Desktop/mvcsite/Views/HelloWorld/Index.cshtml]
+[C:/Users/Box/Source/Repos/mvcsite/Views/Account/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Box/Source/Repos/mvcsite/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Box/Source/Repos/mvcsite/Views/HelloWorld/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVsbG9Xb3JsZFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/фвьшт/Desktop/mvcsite/Views/Home/Index.cshtml]
+[C:/Users/Box/Source/Repos/mvcsite/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/фвьшт/Desktop/mvcsite/Views/Home/Privacy.cshtml]
+[C:/Users/Box/Source/Repos/mvcsite/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/фвьшт/Desktop/mvcsite/Views/Loxotron/Index.cshtml]
+[C:/Users/Box/Source/Repos/mvcsite/Views/Loxotron/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG94b3Ryb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/фвьшт/Desktop/mvcsite/Views/Shared/Error.cshtml]
+[C:/Users/Box/Source/Repos/mvcsite/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/фвьшт/Desktop/mvcsite/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Box/Source/Repos/mvcsite/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/фвьшт/Desktop/mvcsite/Views/_ViewImports.cshtml]
+[C:/Users/Box/Source/Repos/mvcsite/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/фвьшт/Desktop/mvcsite/Views/_ViewStart.cshtml]
+[C:/Users/Box/Source/Repos/mvcsite/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/фвьшт/Desktop/mvcsite/Views/Shared/_Layout.cshtml]
+[C:/Users/Box/Source/Repos/mvcsite/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-150ph5xe6b

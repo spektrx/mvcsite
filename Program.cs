@@ -1,9 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
+using mvcsite.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
+
+string connection = builder.Configuration.GetConnectionString("Default");
+builder.Services.AddDbContext<ApplicationContext>(options => options.UseMySql(connection, ServerVersion.AutoDetect(connection)));
+
 builder.Services.AddControllersWithViews();
 //builder.Services.AddControllers();
+builder.Services.AddAuthentication("Cookies").AddCookie(options => options.LoginPath = "/Account/Login");
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -20,6 +30,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
