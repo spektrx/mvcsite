@@ -1,0 +1,13 @@
+﻿@model mvcsite.Models.User
+
+<form asp-action="Register" method="post">
+
+    <label asp-for="Name">Имя</label> <br />
+    <input type="text" asp-for="Name" required /> <br />
+    
+    <label asp-for="Password">Пароль</label> <br />
+    <input asp-for="Password" required>
+
+    <input type="submit" />
+
+</form>

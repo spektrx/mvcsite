@@ -1,4 +1,4 @@
-
+﻿
 
 
 <form action="/loxotron/play" method="post">
@@ -19,6 +19,22 @@
     let data = @Html.Raw(Json.Serialize(ViewData["Data"]))
     let str = document.getElementById("Crash")
 
-    str.innerText = data.cef
+    let Count = data.count; // Значение переменной Count
+    console.log(data)
+    function multiplyWithDelay() {
+        let number = 1;
+
+        for (let i = 0; i < Count; i++) {
+            setTimeout(() => {
+                number *= 1.01;
+                str.innerHTML = number.toFixed(4)
+
+            }, i * 100); // Задержка уменьшается на 0.1 секунду с каждой итерацией
+        }
+    }
+
+    multiplyWithDelay();
+
+    
 
 </script>
