@@ -1,0 +1,51 @@
+body {
+    background-image: url(fon.png);
+    /*background-repeat: no-repeat;
+    /* background-size: cover; */
+    background-size: 100% 100%;
+
+    height: 100%; 
+    
+    color: #fff;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+}
+
+.ramka {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    align-items: center;
+    border: 3px solid grey;
+}
+
+hr {
+    width: 100%;
+
+}
+
+button {
+    background-color: #dfbe2b; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.btn {
+    width: 100px;
+    height: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.but__zone {
+    display: flex;
+}

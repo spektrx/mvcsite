@@ -1029,19 +1029,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Box\\.nuget\\packages\\": {}
+    "C:\\Users\\фвьшт\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Box\\Source\\Repos\\mvcsite\\mvcsite.csproj",
+      "projectUniqueName": "C:\\Users\\фвьшт\\Desktop\\mvcsite-1\\mvcsite.csproj",
       "projectName": "mvcsite",
-      "projectPath": "C:\\Users\\Box\\Source\\Repos\\mvcsite\\mvcsite.csproj",
-      "packagesPath": "C:\\Users\\Box\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Box\\Source\\Repos\\mvcsite\\obj\\",
+      "projectPath": "C:\\Users\\фвьшт\\Desktop\\mvcsite-1\\mvcsite.csproj",
+      "packagesPath": "C:\\Users\\фвьшт\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\фвьшт\\Desktop\\mvcsite-1\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Box\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\фвьшт\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1101,7 +1106,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
