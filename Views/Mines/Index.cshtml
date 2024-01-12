@@ -1,0 +1,207 @@
+@{
+    ViewData["Title"] = "Mines";
+
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Игра "Найди монету"</title>
+</head>
+<body>
+  <div id="game-board"></div>
+  <p>Баланс: <span id="balance"></span> монет</p>
+  <p>Ставка: <input type="number" id="bet" min="1" max="100" step="1" value="1"></p>
+  <button onclick="startGame()">Играть</button>
+  <button onclick="claimWinnings()" id="claim-button" disabled>Забрать выигрыш</button>
+  <p id="multiplier"></p>
+  <p id="result"></p>
+  <script>
+
+    const gameBoard = document.getElementById('game-board');
+const betInput = document.getElementById('bet');
+const startButton = document.querySelector('button:first-of-type');
+const claimButton = document.getElementById('claim-button');
+const multiplierDisplay = document.getElementById('multiplier');
+const resultDisplay = document.getElementById('result');
+let balanceStr = document.getElementById("balance")
+
+const mineEmoji = '💣';
+const coinEmoji = '💰';
+
+const multiplierCoefficients = {
+  1: 1.21,
+  2: 1.53,
+  3: 1.96,
+  4: 2.53,
+  5: 3.32,
+  6: 4.43,
+  7: 6.01,
+  8: 8.33,
+  9: 11.8,
+  10: 17.16,
+  11: 25.74,
+  12: 40.04,
+  13: 65.07,
+  14: 111.55,
+  15: 204.51,
+  16: 409.02,
+  17: 920.29,
+  18: 2450.0,
+  19: 8590.0,
+  20: 51540.0,
+};
+
+let balance = 100
+balanceStr.innerText = balance
+let gameGrid = [];
+let remainingSquares = 25;
+let coinsFound = 0;
+let bet = 1;
+
+function startGame() {
+  bet = parseInt(betInput.value, 10);
+  if (isNaN(bet) || bet < 1 || bet > balance) {
+    alert("Пожалуйста, введите корректную ставку (целое число больше 0).");
+    return;
+  }
+  balance -= bet
+  balanceStr.innerText = balance
+  initializeGame();
+}
+
+function initializeGame() {
+  gameGrid = Array.from({ length: 5 }, () => Array(5).fill(coinEmoji));
+
+  // Place 5 mines randomly
+  for (let i = 0; i < 5; i++) {
+    const minePosition = getRandomPosition();
+    gameGrid[minePosition.row][minePosition.col] = mineEmoji;
+  }
+
+  renderGameBoard();
+  resultDisplay.textContent = '';
+  coinsFound = 0;
+  remainingSquares = 25;
+  betInput.disabled = true;
+  startButton.disabled = true;
+  claimButton.disabled = true;
+  multiplierDisplay.textContent = '';
+}
+
+function getRandomPosition() {
+  const row = Math.floor(Math.random() * 5);
+  const col = Math.floor(Math.random() * 5);
+  return { row, col };
+}
+
+function renderGameBoard() {
+  gameBoard.innerHTML = '';
+  for (let row = 0; row < 5; row++) {
+    for (let col = 0; col < 5; col++) {
+      const square = document.createElement('button');
+      square.classList.add('square');
+      square.dataset.row = row;
+      square.dataset.col = col;
+      square.textContent = '?';
+      square.addEventListener('click', () => handleClick(row, col));
+      gameBoard.appendChild(square);
+    }
+  }
+}
+
+function handleClick(row, col) {
+  const square = document.querySelector(`.square[data-row="${row}"][data-col="${col}"]`);
+  square.disabled = true; // Делаем кнопку неактивной после нажатия
+
+  if (gameGrid[row][col] === mineEmoji) {
+    gameOver(true);
+  } else if (gameGrid[row][col] === coinEmoji) {
+    coinsFound++;
+    remainingSquares--;
+    gameGrid[row][col] = coinEmoji;
+    updateClaimButton();
+
+    if (coinsFound === 15) {
+      gameOver(false);
+    }
+  } else {
+    remainingSquares--;
+  }
+
+  const multiplier = multiplierCoefficients[coinsFound];
+  multiplierDisplay.textContent = `Коэффициент: x${multiplier.toFixed(2)}`;
+
+  square.textContent = gameGrid[row][col];
+  square.classList.add('revealed'); // Добавляем класс для зеленого контура
+
+  if (remainingSquares === 0 && coinsFound < 15) {
+    gameOver(true);
+  }
+}
+
+function gameOver(isMineClicked) {
+  if (isMineClicked) {
+    resultDisplay.textContent = 'Вы нашли мину! Ваша ставка сгорает.';
+    claimButton.disabled = true;
+    betInput.disabled = false
+    startButton.disabled = false
+  } else {
+    const multiplier = multiplierCoefficients[coinsFound];
+    const winnings = bet * multiplier;
+    resultDisplay.textContent = `Вы нашли ${coinsFound} монет(ы)! Ваш выигрыш: ${winnings.toFixed(2)} монет`;
+    claimButton.disabled = true;
+    betInput.disabled = false
+    startButton.disabled = false
+  }
+
+  // Отключаем все кнопки после завершения игры
+  const squares = document.querySelectorAll('.square');
+  squares.forEach(square => square.disabled = true);
+
+  // Раскрываем все квадраты
+  for (let row = 0; row < 5; row++) {
+    for (let col = 0; col < 5; col++) {
+      const square = document.querySelector(`.square[data-row="${row}"][data-col="${col}"]`);
+      square.textContent = gameGrid[row][col];
+      square.classList.add('revealed'); // Добавляем класс для зеленого контура
+    }
+  }
+}
+
+function updateClaimButton() {
+  const multiplier = multiplierCoefficients[coinsFound];
+  const potentialWinnings = bet * multiplier;
+  claimButton.disabled = coinsFound === 0 || potentialWinnings < 1;
+}
+
+function claimWinnings() {
+  const multiplier = multiplierCoefficients[coinsFound];
+  const winnings = bet * multiplier;
+  for (let row = 0; row < 5; row++) {
+    for (let col = 0; col < 5; col++) {
+      const square = document.querySelector(`.square[data-row="${row}"][data-col="${col}"]`);
+      square.textContent = gameGrid[row][col];
+      square.classList.add('revealed'); // Добавляем класс для зеленого контура
+    }
+  }
+  const squares = document.querySelectorAll('.square');
+  squares.forEach(square => square.disabled = true);
+  resultDisplay.textContent = `Вы забрали свой выигрыш: ${winnings.toFixed(2)} монет`;
+  claimButton.disabled = true;
+  claimButton.disabled = true;
+    betInput.disabled = false
+    startButton.disabled = false
+  balance += winnings
+  balanceStr.innerText = balance
+
+}
+
+//initializeGame();
+
+  </script>
+</body>
+</html>

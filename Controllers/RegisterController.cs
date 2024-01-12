@@ -9,17 +9,17 @@ namespace mvcsite.Controllers
     public class RegisterController : Controller
     {
 
-        ApplicationContext db;
-
-        public RegisterController(ApplicationContext context)
-        {
-            db = context;
-        }
 
 
         public IActionResult Index()
         {
             return View();
+        }
+        ApplicationContext db;
+
+        public RegisterController(ApplicationContext context)
+        {
+            db = context;
         }
 
         public async Task<RedirectResult> Register(IFormCollection form)
