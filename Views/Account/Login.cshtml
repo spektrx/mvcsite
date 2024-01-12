@@ -5,8 +5,14 @@ login account
 <form asp-action="login" asp-controller="account">
     <p>
         <label asp-for="Name">Имя</label><br />
-        <input type="text" asp-for="Name" />
+        <input type="text" asp-for="Name" required />
     </p>
+
+    <p>
+        <label asp-for="Name">Пароль</label><br />
+        <input asp-for="Password" required />
+    </p>
+
     <p>
         <input type="submit" value="Отправить" />
     </p>

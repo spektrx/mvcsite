@@ -5,7 +5,7 @@ using mvcsite.Models;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace mvcsite.Controllers
 {
@@ -31,10 +31,11 @@ namespace mvcsite.Controllers
         public async Task<IActionResult> Login(string? returnUrl, IFormCollection form)
         {
             string name = form["name"];
+            string password = form["password"];
 
-            User? user = await db.Users.FirstOrDefaultAsync(user => user.Name == name);
+            User? user = await db.Users.FirstOrDefaultAsync(user => user.Name == name && user.Password == password);
 
-            if (user == null) { return Unauthorized(); }
+            if (user == null) { return Unauthorized("аккаунт не найден"); }
 
             List<Claim> claims = new List<Claim>() { new Claim(ClaimTypes.Name, name)};
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookies");
@@ -45,17 +46,14 @@ namespace mvcsite.Controllers
             return Redirect(returnUrl ?? "/");
         }
 
-        // GET: AccountController/Details/5
-        public ActionResult Details(int id)
+        [Authorize]
+        public async Task<RedirectResult> Logout()
         {
-            return View();
+            await HttpContext.SignOutAsync();
+
+            return Redirect("/");
         }
 
-        // GET: AccountController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
         // POST: AccountController/Create
         [HttpPost]
